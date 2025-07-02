@@ -16,7 +16,6 @@
       align-items: center;
       min-height: 100vh;
     }
-
     .quiz-container {
       background: #fff;
       padding: 30px;
@@ -26,27 +25,22 @@
       width: 95%;
       box-sizing: border-box;
     }
-
     h1 {
       text-align: center;
       color: #0072ff;
       margin-bottom: 20px;
     }
-
     .question {
       font-size: 20px;
       margin-bottom: 20px;
     }
-
     .choices {
       list-style: none;
       padding: 0;
     }
-
     .choices li {
       margin: 10px 0;
     }
-
     .choices button {
       width: 100%;
       padding: 12px;
@@ -57,30 +51,32 @@
       cursor: pointer;
       transition: 0.3s ease;
     }
-
     .choices button:hover {
       background-color: #0072ff;
       color: white;
     }
-
     .choices button.correct {
       background-color: #28a745 !important;
       color: white;
       border-color: #28a745;
     }
-
     .choices button.incorrect {
       background-color: #dc3545 !important;
       color: white;
       border-color: #dc3545;
     }
-
     #score {
       text-align: center;
       margin-top: 25px;
       font-size: 18px;
       color: #000;
       font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: white;
     }
   </style>
 </head>
@@ -92,14 +88,17 @@
     <p id="score"></p>
   </div>
 
+  <footer>
+    Waxaa diyaariyay: <strong>Jamaal Ahmed Abdikariim</strong>
+  </footer>
+
   <script>
     const quizData = [
-       { question: "Waa tee caasimadda maamulka Puntland?", choices: ["Garoowe", "Boosaaso", "Qardho", "Laascaanood"], correct: 0 },
-      { question: "sheeg magaca buurta ee u dhexeeya Itoobiya iyo Soomaalind?", choices: ["Buuraha Golis", "Buuraha Cal Madow", "Qudubka Nugaal", "Buuraha Fafan"], correct: 3 },
+      { question: "Waa tee caasimadda maamulka Puntland?", choices: ["Garoowe", "Boosaaso", "Qardho", "Laascaanood"], correct: 0 },
       { question: "Waa tee caasimadda DDSI?", choices: ["Wardheer", "Godey", "Jigjiga", "Fiiq"], correct: 2 },
       { question: "Waa tee caasimadda Somaliland?", choices: ["Hargeysa", "Burco", "Berbera", "Laascaanood"], correct: 0 },
       { question: "Waa tee magaalada ugu weyn NFD?", choices: ["Mandhera", "Garissa", "Wajir", "Isiolo"], correct: 1 },
-      { question: "sheeg magaca webiga intu ka yimaado Itoobiya taga Jubbaland?", choices: ["Webiga Shabeelle", "Webiga Dawa", "Webiga Jubba", "Webiga Fafan"], correct: 2 },
+      { question: "Sheeg magaca webiga inta uu ka yimaado Itoobiya taga Jubbaland?", choices: ["Webiga Shabeelle", "Webiga Dawa", "Webiga Jubba", "Webiga Fafan"], correct: 2 },
       { question: "Waa kuma madaxweynihii ugu horreeyay ee Jamhuuriyadda Soomaaliya?", choices: ["Cabdiqaasim", "Sharmaarke", "Aden Cadde", "Siyaad Barre"], correct: 2 },
       { question: "Run mise Been: Soomaaliya waa waddanka ugu xeebta dheer Afrika?", choices: ["Run", "Been"], correct: 0 },
       { question: "Waa tee caasimadda Galmudug?", choices: ["Cadaado", "Galkacyo", "Dhuusamareeb", "Cabudwaaq"], correct: 2 },
@@ -109,8 +108,6 @@
       { question: "Run mise Been: Soomaaliya waxay xuduud la leedahay afar waddan?", choices: ["Run", "Been"], correct: 1 },
       { question: "Waa tee caasimadda gobolka Mudug?", choices: ["Gaalkacyo", "Hobyo", "Galdogob", "Jariban"], correct: 0 },
       { question: "Run mise Been: Wabiga Jubba wuxuu ka yimaadaa Itoobiya?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa kuma Madaxweynaha Soomaaliya ee hadda talada haya (2025)?", choices: ["Farmaajo", "Hassan Sheikh", "Shariif Sheekh", "Cali Mahdi"], correct: 1 },
-      { question: "Intan magaalo midkee ah magaalo dekeded muhiim u ah Soomaaliya?", choices: ["Baraawe", "Xudur", "Galdogob", "Kismaayo"], correct: 3 },
       { question: "Run mise Been: Gobolka Bari wuxuu ku yaal koonfurta Soomaaliya?", choices: ["Run", "Been"], correct: 1 },
       { question: "Waa tee caasimadda Gobolka Awdal?", choices: ["Borama", "Baki", "Dila", "Saylac"], correct: 0 },
       { question: "Run mise Been: Gobolka Nugaal wuxuu ku yaal waqooyiga Soomaaliya?", choices: ["Run", "Been"], correct: 0 },
@@ -119,35 +116,8 @@
       { question: "Run mise Been: Af-Soomaaliga waxa la qoray 1972?", choices: ["Run", "Been"], correct: 0 },
       { question: "Waa tee caasimadda maamulka Jubbaland?", choices: ["Kismaayo", "Doolow", "Luuq", "Bu’aale"], correct: 0 },
       { question: "Run mise Been: Gobolka Gedo wuxuu ka tirsan yahay Jubbaland?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa tee caasimadda deegaanka Soomaalida Itoobiya?", choices: ["Jigjiga", "Godey", "Dollo", "Wardheer"], correct: 0 },
       { question: "Waa maxay magaca rasmiga ah ee deegaanka Soomaalida Itoobiya?", choices: ["DDS", "Somali Zone", "SRS", "DDSI"], correct: 3 },
-      { question: "Waa kee webiga mara magaalada Godey?", choices: ["Shabeelle", "Jubba", "Dheere", "Genaale"], correct: 0 },
       { question: "Run mise Been: Magaalada Qabridahare waxay ka tirsan tahay DDSI?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa tee degmada ugu weyn deegaanka Soomaalida Itoobiya?", choices: ["Godey", "Jigjiga", "Wardheer", "Dollo"], correct: 1 },
-      { question: "Run mise Been: Qoraxay waa magaalo ka tirsan gobolka Jigjiga?", choices: ["Run", "Been"], correct: 1 },
-      { question: "Waa maxay NFD macnaheedu?", choices: ["Northern Federal District", "Northern Frontier District", "National Frontier Division", "North Free Division"], correct: 1 },
-      { question: "Waa tee caasimadda gobolka Waqooyi Bari Kenya (NFD)?", choices: ["Wajir", "Mandhera", "Garissa", "Isiolo"], correct: 2 },
-      { question: "Run mise Been: Dadka NFD badankoodu waa Soomaali?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa tee degmooyinkii ugu waaweynaa ee NFD markii hore?", choices: ["Garissa, Mandhera, Wajir", "Moyale, Isiolo, Marsabit", "Lamu, Malindi, Kilifi", "Wajir, Garsen, Hola"], correct: 0 },
-      { question: "Run mise Been: Dagaalkii 'Shifta' wuxuu ka dhacay NFD?", choices: ["Run", "Been"], correct: 0 },
-      { question: "NFD waxaa gumaysan jiray oo gumaystihii u dhiibay Kenya?", choices: ["Talyaaniga", "Britain", "Faransiiska", "Itoobiya"], correct: 1 },
-      { question: "Waa tee gobolka NFD ee ugu xuduud dhow Soomaaliya?", choices: ["Wajir", "Mandhera", "Isiolo", "Garissa"], correct: 1 },
-      { question: "Waa tee gobolka NFD ee caan ku ah xoolaha geela?", choices: ["Wajir", "Garissa", "Mandhera", "Dhammaan kor ku xusan"], correct: 3 },
-      { question: "Run mise Been: Qoomiyado kale oo aan Soomaali ahayn kuma noola NFD?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa kee gobolka ay ku taallo magaalada Garowe?", choices: ["Bari", "Mudug", "Nugaal", "Sanaag"], correct: 2 },
-      { question: "Waa tee magaalada madaxda maamulka Hirshabelle?", choices: ["Beledweyne", "Jowhar", "Mahaday", "Cadale"], correct: 1 },
-      { question: "Run mise Been: Magaalada Hargeysa waa caasimadda gobolka saxil?", choices: ["Run", "Been"], correct: 1 },
-      { question: "Waa tee magaalada ugu weyn gobolka Bay?", choices: ["Xudur", "Baidoa", "Baraawe", "Qansax Dheere"], correct: 1 },
-      { question: "Run mise Been: Soomaaliya waxay leedahay xuduud badeed oo dheer?", choices: ["Run", "Been"], correct: 0 },
-      { question: "Waa tee magaca caasimadda gobolka Sanaag?", choices: ["Laascaanood", "Cerigabo", "Badhan", "Ceerigaabo"], correct: 3 },
-      { question: "Waa tee gobolka ay ku taallo magaalada Marka?", choices: ["Shabeellaha Dhexe", "Bakool", "Shabeellaha Hoose", "Hiiraan"], correct: 2 },
-      { question: "sheeg magaca magalada casimada u ah maamulka Koonfur Galbeed?", choices: ["Baydhabo", "Baraawe", "Xudur", "Buurhakaba"], correct: 0 },
-      { question: "Run mise Been: Gobolka karkaar wuxuu ka mid yahay gobolada Puntland?", choices: ["Run", "Been"], correct: 1 },
-      { question: "Waa tee magaalada ugu weyn gobolka Togdheer?", choices: ["Burco", "Berbera", "Buuhoodle", "Ceel Afweyn"], correct: 0 },
-      { question: "Waa kuma madaxwaynihii ugu horreeyay Soomaaliya?", choices: ["Aden Cadde", "Sharmaarke", "Siyaad Barre", "Cabdiqaasim"], correct: 0 },
-      { question: "Waa tee magaalada caasimadda u ah gobolka Bakool?", choices: ["Tayeeglow", "Rab Dhuure", "Xudur", "Ceelbarde"], correct: 2 },
-      { question: "Run mise Been: Soomaaliya waxay xornimada ka qaadatay Ingiriiska 1960?", choices: ["Run", "Been"], correct: 1 },
-      { question: "Waa tee magaalada madaxda gobolka Bari?", choices: ["Boosaaso", "Qardho", "Bargaal", "Iskushuban"], correct: 0 },
     ];
 
     let currentQuestion = 0;
